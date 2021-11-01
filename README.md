@@ -9,7 +9,7 @@ The link with the progress bar and spinner is available in the script as commmen
 The link with the progress bar and spinner can also be found [here](https://stackoverflow.com/a/38340073)!
 
 ### To run
-- POSIX - \*NIX - GNU Linux
+- POSIX | \*NIX | GNU-Linux
   - ```sudo chmod +x /path/to/troll.sh```
   - ```/path/to/troll.sh```
 
