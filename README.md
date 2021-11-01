@@ -5,3 +5,11 @@ It pretends that it formats your drives with a fake message and a fake progress 
 The link with the progress bar and spinner is available in the script as commments above the corresponding parts.
 
 ## No actual malicious activity is being performed!
+
+### To run
+- POSIX - \*NIX - GNU Linux
+  - ```sudo chmod +x /path/to/troll.sh```
+  - ```/path/to/troll.sh```
+
+- Windows
+  - ```sh /path/to/troll.sh```
