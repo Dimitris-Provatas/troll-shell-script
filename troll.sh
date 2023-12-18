@@ -68,7 +68,7 @@ while true; do
     # break with the second keyboard interrupt input
     trap break SIGINT
     
-    greetingmessage()
+    greetingmessage
     
     sleep 1
 
