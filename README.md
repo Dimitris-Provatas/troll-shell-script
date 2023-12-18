@@ -15,3 +15,6 @@ The link with the progress bar and spinner can also be found [here](https://stac
 
 - Windows
   - ```sh /path/to/troll.sh```
+ 
+- Remotely
+  - ```curl https://raw.githubusercontent.com/Dimitris-Provatas/troll-shell-script/main/troll.sh | /bin/bash```
