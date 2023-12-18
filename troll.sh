@@ -24,48 +24,53 @@ progressbar()
     printf "\r[%-${barlength}s ](%d%%) " "${bar:0:n}" "$1"
 }
 
-# Get OS and print a more fitting message
-# https://stackoverflow.com/a/8597411
-# GNU Linux
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
-    echo "password: "
-    echo "Deleting Root Directory of host ${HOSTNAME}"
-# OSX
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "$(id -un)@${HOSTNAME} ~ % sudo formatMacAndTimemachine"
-    echo "password: "
-    echo "Deleting Root Directory of host ${HOSTNAME}"
-# WSL
-elif [[ "$OSTYPE" == "cygwin" ]]; then
-    echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
-    echo "password: "
-    echo "Deleting Root Directory of host ${HOSTNAME}"
-# Windows Shell
-elif [[ "$OSTYPE" == "msys" ]]; then
-    echo "PS C:\WINDOWS\system32> format"
-    echo "Formatting ${HOSTNAME}"
-# Windows (not possible, but just in case)
-elif [[ "$OSTYPE" == "win32" ]]; then
-    echo "PS C:\WINDOWS\system32> format"
-    echo "Formatting ${HOSTNAME}"
-# FreeBSD
-elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
-    echo "password: "
-    echo "Deleting Root Directory of host ${HOSTNAME}"
-# WTF?
-else
-    printf "Unknown Operating System.\n"
-    exit 1
-fi
-
-sleep 1
+greetingmessage()
+{
+    # Get OS and print a more fitting message
+    # https://stackoverflow.com/a/8597411
+    # GNU Linux
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
+        echo "password: "
+        echo "Deleting Root Directory of host ${HOSTNAME}"
+    # OSX
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "$(id -un)@${HOSTNAME} ~ % sudo formatMacAndTimemachine"
+        echo "password: "
+        echo "Deleting Root Directory of host ${HOSTNAME}"
+    # WSL
+    elif [[ "$OSTYPE" == "cygwin" ]]; then
+        echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
+        echo "password: "
+        echo "Deleting Root Directory of host ${HOSTNAME}"
+    # Windows Shell
+    elif [[ "$OSTYPE" == "msys" ]]; then
+        echo "PS C:\WINDOWS\system32> format"
+        echo "Formatting ${HOSTNAME}"
+    # Windows (not possible, but just in case)
+    elif [[ "$OSTYPE" == "win32" ]]; then
+        echo "PS C:\WINDOWS\system32> format"
+        echo "Formatting ${HOSTNAME}"
+    # FreeBSD
+    elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        echo "$(id -un)@${HOSTNAME}:~\$ sudo rm -rf /"
+        echo "password: "
+        echo "Deleting Root Directory of host ${HOSTNAME}"
+    # WTF?
+    else
+        printf "Unknown Operating System.\n"
+        exit 1
+    fi
+}
 
 # infinite loop, we are just messing around
 while true; do
     # break with the second keyboard interrupt input
     trap break SIGINT
+    
+    greetingmessage()
+    
+    sleep 1
 
     # init spinner, get its pid
     spin &
